@@ -44,7 +44,7 @@ Route::resource('/rooms', SalaController::class)->middleware('auth');
 
 //GAME ROUTES -----------------------------------------------------------
 Route::get('/gamesView', [JocController::class,'view']);
-Route::resource('/games', JocController::class)->middleware('auth');
+Route::resource('/games', JocController::class);
 
 //RESERVA ROUTES --------------------------------------------------------
 //Route::get('/reservesView', [ReservaController::class,'view']);

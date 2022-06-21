@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Joc;
+use App\Models\Valoracio;
 use Illuminate\Http\Request;
 
-class JocController extends Controller
+class ValoracioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +15,8 @@ class JocController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            return Joc::all();
-        }else{
-            return view('home');
+            return Valoracio::all()->where('id_joc', $request->id);
         }
-    }
-
-    public function view(){
-        return view('game.game');
     }
 
     /**
@@ -43,14 +37,18 @@ class JocController extends Controller
      */
     public function store(Request $request)
     {
-        $joc = new Joc();
-        $joc->name = $request->name;
-        $joc->duration = $request->duration;
-        $joc->room_id = $request->room_id;
-        //$joc->image = $request->imgName;
-        $joc->save();
+        $valoracio = new Valoracio();
+        $valoracio->id_joc = $request->id_joc;
+        $valoracio->id_user = $request->id_user;
+        $valoracio->valoracio = $request->val;
+        if($request->comment === ""){
+            $valoracio->comentari = null;
+        }else{
+            $valoracio->comentari = $request->comment;
+        }
+        $valoracio->save();
 
-        return $joc;
+        return $valoracio;
     }
 
     /**
@@ -61,9 +59,7 @@ class JocController extends Controller
      */
     public function show($id)
     {
-        $joc = Joc::find($id);
-
-        return view("game.gameView")->with($joc);
+        //
     }
 
     /**
@@ -86,12 +82,7 @@ class JocController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $joc = Joc::find($id);
-        $joc->name = $request['name'];
-        $joc->duration = $request['duration'];
-        $joc->room_id = $request['room_id'];
-        $joc->save();
-        return $joc;
+        //
     }
 
     /**
@@ -102,7 +93,6 @@ class JocController extends Controller
      */
     public function destroy($id)
     {
-        $joc = Joc::find($id);
-        $joc->delete();
+        //
     }
 }

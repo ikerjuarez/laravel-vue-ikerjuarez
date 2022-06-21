@@ -35,6 +35,10 @@ class ReservaController extends Controller
         return view('reserva.confirm');
     }
 
+    public function user(){
+        return view('reserva.userReserva');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

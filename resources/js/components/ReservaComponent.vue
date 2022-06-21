@@ -93,7 +93,9 @@ export default {
 
             axios.post('/reserves', params)
                 .then(res => {
+                    alert("Reservation send successfully!!")
                     this.reserves.push(res.data);
+                    this.reservation = false;
                 })
         },
 

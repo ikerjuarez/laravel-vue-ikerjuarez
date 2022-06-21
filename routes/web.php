@@ -5,6 +5,8 @@ use App\Http\Controllers\JocController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ValoracioController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +25,12 @@ Auth::routes();
 //MAIN ROUTES
 Route::get('/home', [HomeController::class,'index']);
 Route::get('/main', [HomeController::class,'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 // USER ROUTES ----------------------------------------------------------
-Route::get('/', function () {
+/*Route::get('login', function () {
     return view('auth.login');
-});
+});*/
 Route::get('/seeUsers', [UserController::class,'viewUsers']);
 Route::get('/user/{id}/delete', [UserController::class,'deleteUser']);
 Route::get('/user/{id}/update', [UserController::class,'updateUserView']);
@@ -45,6 +48,11 @@ Route::resource('/games', JocController::class)->middleware('auth');
 
 //RESERVA ROUTES --------------------------------------------------------
 //Route::get('/reservesView', [ReservaController::class,'view']);
-Route::get('/makeReservation', [ReservaController::class,'view']);
+Route::get('/makeReservation', [ReservaController::class,'view'])->middleware('auth');
 Route::get('/reserves/confirm', [ReservaController::class,'confirm']);
+Route::get('/myReservations', [ReservaController::class,'user']);
 Route::resource('/reserves', ReservaController::class)->middleware('auth');
+
+//VALORACIO ROUTES
+Route::get('/valoracions/{id}', [ValoracioController::class, 'index']);
+Route::resource('/valoracions', ValoracioController::class)->middleware('auth');

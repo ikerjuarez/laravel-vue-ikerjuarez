@@ -18,4 +18,8 @@ class Joc extends Model
     public function reserva(){
         $this->hasMany(Reserva::class);
     }
+
+    public function valoracio(){
+        $this->hasMany(Valoracio::class);
+    }
 }

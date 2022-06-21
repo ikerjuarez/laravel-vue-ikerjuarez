@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jocs', function (Blueprint $table) {
+        Schema::create('valoracions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->time('duration');
-            $table->bigInteger('room_id')->unsigned();
-            $table->foreign('room_id')->references('id')->on('sales');
-            $table->string('image')->nullable();
+            $table->bigInteger("id_joc")->unsigned();
+            $table->foreign("id_joc")->references("id")->on("jocs");
+            $table->bigInteger("id_user")->unsigned();
+            $table->foreign("id_user")->references("id")->on("users");
+            $table->integer("valoracio");
+            $table->text("comentari");
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jocs');
+        Schema::dropIfExists('valoracions');
     }
 };

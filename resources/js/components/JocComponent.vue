@@ -43,6 +43,10 @@
                         <option v-for="sala in sales" :key="sala.name" :value="sala.id">{{sala.id + "- "+sala.name}}</option>
                     </select>
                 </div>
+<!--                <div class="col-sm-4">
+                    <label for="inputImage" class="form-label">Game image</label>
+                    <input type="file" id="inputImage" class="form-control" v-on:change="onChange">
+                </div>-->
                 <div class="col-sm-4 align-self-center">
                     <input type="submit" value="Create game" class="btn btn-success">
                 </div>
@@ -123,7 +127,13 @@ export default {
 
     methods: {
 
+        /*onChange(e){
+            this.joc.imgName = e.target.files[0].name;
+            console.log(this.joc.imgName)
+        },*/
+
         agregar(){
+
             if(this.joc.name.trim() === '' || this.joc.duration.trim() === ''){
                 alert('Dont leave fields blank!!');
                 return;
@@ -132,7 +142,7 @@ export default {
             const params = {
                 name: this.joc.name,
                 duration: this.joc.duration,
-                room_id: this.joc.room_id
+                room_id: this.joc.room_id,
             }
 
             this.joc.name = '';
@@ -146,7 +156,6 @@ export default {
         },
 
         editViewGame(item){
-            console.log(item)
             this.edit = true;
             this.joc.name = item.name;
             this.joc.duration = item.duration;
@@ -180,6 +189,7 @@ export default {
             this.joc.name = '';
             this.joc.duration = '';
             this.joc.room_id = null;
+            this.joc.imgName = '';
         },
 
         deleteGame(game, index){

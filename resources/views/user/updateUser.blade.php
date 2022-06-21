@@ -10,7 +10,7 @@
                 <input type="hidden" name="id" value="{{$userToUpdate->id}}">
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" value="{{$userToUpdate->email}}">
+                    <input type="email" name="email" class="form-control" readonly id="inputEmail" aria-describedby="emailHelp" value="{{$userToUpdate->email}}">
                 </div>
                 <div class="col-sm-6">
                     <label for="inputPassword" class="form-label">Password</label>

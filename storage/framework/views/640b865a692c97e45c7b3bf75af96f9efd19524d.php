@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="<?php echo e(url('/main')); ?>">
+                <a class="navbar-brand">
                     <?php echo e(config('app.name', 'Laravel')); ?>
 
                 </a>
@@ -92,6 +92,8 @@ document.getElementById('profile-form').submit();">My Profile</a>
                                     <?php if(Auth::user()->id == 1): ?>
                                         <a class="dropdown-item" href="/reserves/confirm">Check reservations</a>
                                     <?php endif; ?>
+
+                                    <a class="dropdown-item" href="/myReservations">My Reservations</a>
 
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();

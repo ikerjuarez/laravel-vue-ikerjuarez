@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/main') }}">
+                <a class="navbar-brand">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -90,6 +90,8 @@ document.getElementById('profile-form').submit();">My Profile</a>
                                     @if(Auth::user()->id == 1)
                                         <a class="dropdown-item" href="/reserves/confirm">Check reservations</a>
                                     @endif
+
+                                    <a class="dropdown-item" href="/myReservations">My Reservations</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

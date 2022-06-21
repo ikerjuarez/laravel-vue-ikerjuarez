@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <default-page></default-page>
+    <user-reserva></user-reserva>
 @endsection

@@ -24,6 +24,10 @@ Vue.component('sala', require('./components/SalaComponent.vue').default);
 Vue.component('joc', require('./components/JocComponent.vue').default);
 Vue.component('reserva', require('./components/ReservaComponent.vue').default);
 Vue.component('confirm', require('./components/CheckReservesComponent.vue').default);
+Vue.component('default-page', require('./components/MainComponent.vue').default);
+Vue.component('userReserva', require('./components/UserReservaComponent.vue').default);
+Vue.component('game', require('./components/GameViewComponent.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
